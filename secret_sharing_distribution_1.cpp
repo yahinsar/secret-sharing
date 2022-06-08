@@ -106,16 +106,16 @@ void shamir(cpp_int S, int N, int K, cpp_int P_mod) {
         mod_otr(f_elems[i], P_mod);
     }
 
-    cout << "the polynomial has the form: y = ";
+    cout << "Полученная полиномиальная функция: ";
     print_f_x(f_elems, K, P_mod);
 
     vector <pair <cpp_int, cpp_int>> dots_2(N);
     find_n_dots_rand(f_elems, K, N, dots_2, P_mod);
 
-    cout << endl << "dots: " << endl;
+    cout << endl << "Точки: " << endl;
     for (int i = 0; i < N; i++)
     {
-        cout << "dot №" << i + 1 << ": ";
+        cout << "Точка №" << i + 1 << ": ";
         cout << "( " << dots_2[i].first << "," << dots_2[i].second << " )" << endl;
     }
 
@@ -132,15 +132,15 @@ int main()
     setlocale(LC_ALL, "Rus");
     int N, K;
     cpp_int S, P_mod;
-    cout << "Enter the secret: " << endl;
+    cout << "Введите секрет: " << endl;
     cin >> S;
-    cout << "Enter the total number of participants N: " << endl;
+    cout << "Введите общее количество участников N: " << endl;
     cin >> N;
-    cout << "Enter the number of participants K < " << N << ", needed to recover the secret : " << endl;
+    cout << "Введите количество участников K < " << N << ", которое нужно для восстановления ключа : " << endl;
     cin >> K;
-    cout << "Enter the module p > " << max(S, cpp_int(N)) << ": " << endl;
+    cout << "Введите модуль p > " << max(S, cpp_int(N)) << ": " << endl;
     cin >> P_mod;
     shamir(S, N, K, P_mod);
-    cout << "module: P(0) = " << P_mod << endl;
+    cout << "Модуль: P(0) = " << P_mod << endl;
     return 0;
 }
