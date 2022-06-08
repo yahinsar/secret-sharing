@@ -67,7 +67,7 @@ cpp_int euclid(cpp_int x, cpp_int P_mod) {
         B = dop_A % B;
     }
     if (euclid_vecs[euclid_vecs.size() - 1][1] != 1) {
-        cout << endl << " there is no modular multiplicative inverse " << endl;
+        cout << endl << "Введенный модуль не является простым числом " << endl;
         flag_obr = true;
         return 0;
     }
@@ -134,7 +134,7 @@ void all_multiplies(int in_K, vector <cpp_int> s, cpp_int P_mod) {
 
     cpp_int ed = 1;
     res_multi[s_size].push_back(ed);
-    cout << "for " << in_K + 1 << " dot: " << endl;
+    cout << "для " << in_K + 1 << "-й точки: " << endl;
     for (int i = 0; i < res_multi.size(); i++)
     {
         cout << "x^" << i << " = ";
@@ -152,10 +152,10 @@ void secret_recovery(int K, vector <pair <cpp_int, cpp_int>>& dots, cpp_int P_mo
 
     vector <pair <cpp_int, cpp_int>> rec_dots = dots;
 
-    cout << endl << "The secret will be restored using the following points: " << endl;
+    cout << endl << "Восстановление ключа будет происходить с помощью следующих точек: " << endl;
     for (int i = 0; i < K; i++)
     {
-        cout << "dot №" << i + 1 << ": ";
+        cout << "Точка №" << i + 1 << ": ";
         cout << "( " << rec_dots[i].first << "," << rec_dots[i].second << " )" << endl;
     }
 
@@ -237,14 +237,14 @@ void secret_recovery(int K, vector <pair <cpp_int, cpp_int>>& dots, cpp_int P_mo
         }
         res_p_x[j] = mod_otr(res_sum, P_mod);
     }
-    cout << endl << "Initial polynomial: " << endl;
+    cout << endl << "Исходная полиномиальная функция: " << endl;
 
     print_f_x(res_p_x, K, P_mod);
 
     cpp_int res_key = res_p_x[0];
 
     res_global_key = res_key;
-    cout << endl << "Secret: P(0) = " << res_key << endl;
+    cout << endl << "Полученный секрет: P(0) = " << res_key << endl;
 }
 
 int main()
@@ -252,16 +252,16 @@ int main()
     setlocale(LC_ALL, "Rus");
     int N, K;
     cpp_int S, P_mod;
-    cout << "Enter the number of participants K: " << endl;
+    cout << "Введите количество участников K: " << endl;
     cin >> K;
-    cout << "Enter the module P: " << endl;
+    cout << "Введите модуль P: " << endl;
     cin >> P_mod;
     vector < pair < cpp_int, cpp_int > > dots_for_recovery;
-    cout << "Enter the " << K << " dots (like: x y): " << endl;
+    cout << "Введите " << K << " точек (так: x y): " << endl;
     for (int i = 0; i < K; i++) {
         cpp_int vvod_R1;
         cpp_int vvod_R2;
-        cout << "dot №" << i + 1 << " :";
+        cout << "Точка №" << i + 1 << " :";
         cin >> vvod_R1 >> vvod_R2;
         dots_for_recovery.push_back(make_pair(vvod_R1, vvod_R2));
         cout << endl;
